@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Environment and secrets - never commit these
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+secrets.*
+
+# Database dumps and local databases
+*.sqlite3
+*_backup.sql
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
