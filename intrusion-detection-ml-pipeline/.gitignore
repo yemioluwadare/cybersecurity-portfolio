@@ -1,0 +1,7 @@
+data/
+models/
+*.joblib
+*.csv
+*.parquet
+*.pkl
+.ipynb_checkpoints/
