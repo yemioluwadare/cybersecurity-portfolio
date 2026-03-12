@@ -62,19 +62,27 @@ securecart-secure-ecommerce
 │
 ├── manage.py
 ├── requirements.txt
+├── .gitignore
 │
-├── securecart/        # Django project configuration
+├── securecart/              # Django project configuration
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
 │
-├── core/              # Application logic
+├── core/                    # Main application logic
 │   ├── models.py
 │   ├── views.py
 │   ├── serializers.py
 │   ├── permissions.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── templates/
+│   └── static/
 │
-├── templates/         # Front-end HTML templates
-├── static/            # Static assets
-├── screenshots/       # Application screenshots
-```
+├── screenshots/             # Application screenshots
+└── README.md
 
 ---
 
