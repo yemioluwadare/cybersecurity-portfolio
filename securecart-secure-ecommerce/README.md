@@ -43,7 +43,7 @@ Bootstrap
 
 ### Shopping Cart
 
-![Cart](screenshots/Shopping Cart.png)
+![Cart](screenshots/Shopping_Cart.png)
 
 ### Checkout Process
 
