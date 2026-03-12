@@ -16,7 +16,7 @@ Intrusion detection systems must detect malicious activity while limiting false 
 
 Traditional signature-based detection struggles with novel attacks, motivating data-driven approaches that learn behavioural patterns directly from network telemetry.
 
-This project frames intrusion detection as a **binary classification problem**:
+This project frames intrusion detection as a binary classification problem:
 
 Benign traffic → 0  
 DDoS attack traffic → 1
@@ -33,17 +33,22 @@ This dataset contains labelled network flows representing benign user activity a
 
 Features include:
 
-- packet statistics
-- flow duration
-- timing characteristics
-- protocol attributes
+- packet statistics  
+- flow duration  
+- timing characteristics  
+- protocol attributes  
 
-To better simulate deployment conditions, a **temporal split** was used:
+To better simulate deployment conditions, a temporal split was used:
 
 Training and validation → Monday–Thursday  
-Test set → Friday traffic
+Test set → Friday traffic  
 
 This design evaluates how well models generalise to new traffic conditions.
+
+The dataset is not included in this repository due to size constraints.
+
+Download it from:  
+https://www.unb.ca/cic/datasets/ids-2017.html
 
 ---
 
@@ -51,12 +56,12 @@ This design evaluates how well models generalise to new traffic conditions.
 
 The pipeline follows a structured workflow:
 
-1. Raw CSV ingestion from CIC IDS dataset
-2. Column standardisation and identifier removal
-3. Streaming preprocessing to handle large datasets
-4. Feature scaling and numeric transformation
-5. Model training
-6. Evaluation and metric export
+1. Raw CSV ingestion from CIC IDS dataset  
+2. Column standardisation and identifier removal  
+3. Streaming preprocessing to handle large datasets  
+4. Feature scaling and numeric transformation  
+5. Model training  
+6. Evaluation and metric export  
 7. Artefact generation (figures, metrics, trained models)
 
 ---
@@ -67,15 +72,15 @@ Two machine learning models were compared:
 
 ### SGD Logistic Regression
 
-- Incremental learning using stochastic gradient descent
-- Supports streamed training with partial_fit
-- Computationally efficient for large datasets
+- Incremental learning using stochastic gradient descent  
+- Supports streamed training with partial_fit  
+- Computationally efficient for large datasets  
 
 ### Random Forest
 
-- Non-linear ensemble model
-- Captures complex feature interactions
-- Higher computational cost
+- Non-linear ensemble model  
+- Captures complex feature interactions  
+- Higher computational cost  
 
 A dummy baseline classifier was also used to establish minimum expected performance.
 
@@ -85,10 +90,10 @@ A dummy baseline classifier was also used to establish minimum expected performa
 
 Models were evaluated using:
 
-- Accuracy
-- Macro F1 score
-- ROC-AUC
-- Confusion matrices
+- Accuracy  
+- Macro F1 score  
+- ROC-AUC  
+- Confusion matrices  
 
 Macro-F1 was prioritised due to class imbalance in the dataset.
 
@@ -104,7 +109,7 @@ The SGD logistic regression model showed slightly lower validation accuracy but 
 
 This highlights a common issue in security ML:
 
-**Models that perform best on validation data do not always generalise best under changing network conditions.**
+Models that perform best on validation data do not always generalise best under changing network conditions.
 
 ---
 
@@ -112,10 +117,10 @@ This highlights a common issue in security ML:
 
 Feature importance analysis revealed that several of the most influential variables relate to:
 
-- packet length statistics
-- packet length variance
-- inter-arrival time metrics
-- timing behaviour of flows
+- packet length statistics  
+- packet length variance  
+- inter-arrival time metrics  
+- timing behaviour of flows  
 
 These behavioural features are consistent with known characteristics of volumetric DDoS traffic.
 
@@ -125,10 +130,10 @@ These behavioural features are consistent with known characteristics of volumetr
 
 Several limitations apply:
 
-- CIC IDS 2017 is a simulated dataset
-- network behaviour may differ from real enterprise traffic
-- attackers may manipulate certain features
-- distribution shift can degrade model performance over time
+- CIC IDS 2017 is a simulated dataset  
+- network behaviour may differ from real enterprise traffic  
+- attackers may manipulate certain features  
+- distribution shift can degrade model performance over time  
 
 Future work would include evaluation on additional capture windows and robustness testing against adversarial traffic shaping.
 
@@ -145,3 +150,61 @@ matplotlib
 ---
 
 ## Repository Contents
+
+dsac_final.ipynb → End-to-end intrusion detection pipeline  
+report.pdf → Full technical report  
+figures/ → Generated evaluation figures  
+
+---
+
+## Reproducing the Experiment
+
+### 1. Install dependencies
+
+Install the required Python libraries:
+
+pip install pandas numpy scikit-learn matplotlib joblib
+
+---
+
+### 2. Download the dataset
+
+Download the CIC IDS 2017 dataset from:
+
+https://www.unb.ca/cic/datasets/ids-2017.html
+
+Place the CSV files inside a local directory such as:
+
+data/
+    Monday-WorkingHours.csv  
+    Tuesday-WorkingHours.csv  
+    Wednesday-WorkingHours.csv  
+    Thursday-WorkingHours.csv  
+    Friday-WorkingHours-Afternoon-DDos.csv  
+
+---
+
+### 3. Run the pipeline
+
+Open the notebook:
+
+dsac_final.ipynb
+
+Run all cells to:
+
+1. preprocess the dataset  
+2. train the machine learning models  
+3. evaluate model performance  
+4. generate figures and metrics  
+
+Outputs will be saved to directories such as:
+
+models/  
+figures/  
+metrics_summary.csv  
+
+---
+
+## Notes
+
+The dataset and generated artefacts are not included in this repository due to size constraints. All results can be reproduced by running the notebook with the original dataset.
