@@ -6,7 +6,7 @@ SecureCart is a prototype e-commerce web application built using the Django fram
 
 The project demonstrates how core online shopping functionality can be implemented while applying basic security practices such as authentication, access control, and server-side validation.
 
-The system allows users to browse products, manage a shopping cart, and complete transactions within a structured backend application.
+Users can browse products, manage a shopping cart, and complete transactions through a structured backend application.
 
 ---
 
@@ -15,9 +15,9 @@ The system allows users to browse products, manage a shopping cart, and complete
 - User authentication and session management
 - Product catalogue browsing
 - Shopping cart functionality
-- Order processing workflow
-- Role-based access logic
-- Backend data storage using relational models
+- Checkout workflow
+- Role-based access control
+- Admin dashboard for product and order management
 
 ---
 
@@ -26,8 +26,32 @@ The system allows users to browse products, manage a shopping cart, and complete
 Python  
 Django  
 SQLite  
-HTML templates  
-Bootstrap (if used)  
+HTML Templates  
+Bootstrap  
+
+---
+
+## Application Preview
+
+### Product Catalogue
+
+![Products](screenshots/products.png)
+
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Shopping Cart
+
+![Cart](screenshots/cart.png)
+
+### Checkout Process
+
+![Checkout](screenshots/checkout.png)
+
+### Admin Dashboard
+
+![Admin](screenshots/admin.png)
 
 ---
 
@@ -49,25 +73,26 @@ securecart-secure-ecommerce
 │
 ├── templates/         # Front-end HTML templates
 ├── static/            # Static assets
+├── screenshots/       # Application screenshots
 ```
 
 ---
 
 ## Running the Application
 
-### 1. Install dependencies
+### 1 Install dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-### 2. Apply database migrations
+### 2 Apply database migrations
 
 ```
 python manage.py migrate
 ```
 
-### 3. Start the development server
+### 3 Start the development server
 
 ```
 python manage.py runserver
