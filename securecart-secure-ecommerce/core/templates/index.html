@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - SecureCart{% endblock %}
+
+{% block content %}
+<div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 410px;">
+            <img class="img-fluid" src="{% static 'img/carousel-1.jpg' %}" alt="Image">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                <h3 class="display-4 text-white font-weight-semi-bold mb-4">Shop Now</h3>
+                <a href="{% url 'products' %}" class="btn btn-light py-2 px-3">Browse Products</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Products -->
+<div class="container mt-5">
+    <h2 class="text-center">Featured Products</h2>
+    <div class="row">
+        {% for product in featured_products %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'img/product-' %}{{ forloop.counter }}.jpg" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary add-to-cart" data-product-id="{{ product.id }}">
+                        Add to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No featured products available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();  // Prevent page reload
+
+                var productId = this.dataset.productId;  // Get product ID
+                var url = "{% url 'add_to_cart' 0 %}".replace("0", productId); // Replace '0' with actual ID
+
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": getCookie("csrftoken") 
+                    },
+                    body: JSON.stringify({ product_id: productId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Product added to cart!");  // Confirmation message
+                    } else {
+                        alert("Failed to add product.");
+                    }
+                });
+            });
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>

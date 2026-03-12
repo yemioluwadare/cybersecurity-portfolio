@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}  <!-- Load static files -->
+
+{% block title %}Products - SecureCart{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">All Products</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card">
+                <!-- Product Image -->
+                <img src="{% static 'img/product-' %}{{ forloop.counter }}.jpg" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <!-- Product Details -->
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+
+                    <!-- Add to Cart Form -->
+                    <form class="add-to-cart-form" method="POST" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No products available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); 
+
+                let productId = this.dataset.productId;
+                let url = "{% url 'add_to_cart' 0 %}".replace("0", productId);
+                let csrfToken = getCookie("csrftoken"); 
+
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken
+                    },
+                    body: JSON.stringify({ product_id: productId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        this.innerText = "Added to Cart!";  
+                        this.disabled = true;  
+                    } else {
+                        alert("Failed to add product: " + data.error);
+                    }
+                });
+            });
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
