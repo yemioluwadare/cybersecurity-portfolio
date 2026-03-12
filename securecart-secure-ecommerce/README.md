@@ -43,7 +43,7 @@ Bootstrap
 
 ### Shopping Cart
 
-![Cart](screenshots/Shopping_Cart.png)
+![Cart](screenshots/Shopping Cart.png)
 
 ### Checkout Process
 
@@ -51,7 +51,7 @@ Bootstrap
 
 ### Admin Dashboard
 
-![Admin](screenshots/Admin_Page.png)
+![Admin](screenshots/Admin.png)
 
 ---
 
