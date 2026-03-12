@@ -35,23 +35,23 @@ Bootstrap
 
 ### Product Catalogue
 
-![Products](screenshots/products.png)
+![Products](screenshots/Products.png)
 
 ### Login Page
 
-![Login](screenshots/login.png)
+![Login](screenshots/Login.png)
 
 ### Shopping Cart
 
-![Cart](screenshots/cart.png)
+![Cart](screenshots/Shopping_Cart.png)
 
 ### Checkout Process
 
-![Checkout](screenshots/checkout.png)
+![Checkout](screenshots/Checkout.png)
 
 ### Admin Dashboard
 
-![Admin](screenshots/admin.png)
+![Admin](screenshots/Admin_Page.png)
 
 ---
 
