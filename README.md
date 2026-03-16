@@ -1,70 +1,65 @@
 # Cybersecurity Portfolio
 
-This repository contains a selection of technical cybersecurity projects developed during my degree at the University of Warwick.
+This repository contains a selection of technical cybersecurity projects developed during my Cyber Security degree at the University of Warwick.
+
+The portfolio demonstrates work across **machine learning for intrusion detection**, **secure web application development**, and **secure database design**.
 
 ---
 
-## Projects
-
-### Machine Learning Intrusion Detection Pipeline
-Python pipeline for detecting **DDoS attacks** using CIC-IDS network telemetry and temporal evaluation.
-
-### SecureCart – Secure E-Commerce Application
-Django web application implementing **authentication**, **role-based access control**, and secure transaction workflows.
-
-### Secure Banking Database System
-PostgreSQL relational database implementing **RBAC**, **row-level security**, and **audit logging**.
-
 # Projects
 
+- **[Machine Learning Intrusion Detection Pipeline](intrusion-detection-ml-pipeline)**  
+  Python pipeline for detecting **DDoS attacks** using CIC-IDS network telemetry and temporal model evaluation.
+
+- **[SecureCart – Secure E-Commerce Application](securecart-secure-ecommerce)**  
+  Django web application implementing **authentication**, **role-based access control**, and secure shopping workflows.
+
+- **[Secure Banking Database System](secure-banking-database-system)**  
+  PostgreSQL database implementing **RBAC**, **row-level security**, encryption, and audit logging.
+
+---
+
+# Project Details
+
 ## Machine Learning Intrusion Detection Pipeline
-Location: `intrusion-detection-ml-pipeline`
 
 This project implements a reproducible **machine learning pipeline for network intrusion detection** using flow telemetry from the CIC IDS 2017 dataset.
 
-Key aspects of the project include:
+Key aspects include:
 
 - Python-based preprocessing and feature engineering
-- Model training using logistic regression and random forest
-- Evaluation under **temporal train–test splits** to assess real-world robustness
-- Analysis of model performance using precision, recall, and ROC metrics
-
-This project demonstrates the application of **machine learning techniques to cybersecurity monitoring and detection engineering**.
+- Model training using **logistic regression** and **random forest**
+- Evaluation under **temporal train–test splits**
+- Performance analysis using **precision, recall, and ROC metrics**
 
 ---
 
 ## SecureCart – Secure E-Commerce Application
-Location: `securecart-secure-ecommerce`
 
-SecureCart is a **Django-based web application** that models a secure e-commerce system.
+SecureCart is a **Django-based web application** modelling a secure e-commerce system.
 
-The system implements:
+The system includes:
 
 - Authentication and secure session handling
-- Role-based access control for different user types
+- **Role-based access control**
 - Product catalogue browsing and shopping cart functionality
 - Order management workflows
 
-The project focuses on **secure web application design**, backend logic, and database integration.
+The project demonstrates **secure web application design and backend logic**.
 
 ---
 
 ## Secure Banking Database System
-Location: `secure-banking-database-system`
 
 This project implements a **PostgreSQL banking database** designed with strong security and integrity controls.
 
-The database models customers, accounts, and financial transactions while enforcing strict data protection mechanisms.
-
 Key features include:
 
-- Role-Based Access Control (RBAC)
-- Row-Level Security (RLS)
-- Encryption using pgcrypto
-- SQL triggers for audit logging
+- **Role-Based Access Control (RBAC)**
+- **Row-Level Security (RLS)**
+- Encryption using **pgcrypto**
+- **SQL triggers** for audit logging
 - Relational schema enforcing transactional integrity
-
-The project demonstrates **secure relational database design and access control implementation**.
 
 ---
 
@@ -74,9 +69,9 @@ Alongside the engineering projects above, I have also completed practical securi
 
 - Malware reconstruction and behavioural analysis
 - Digital forensic disk image investigation
-- Detection engineering and monitoring design using network telemetry
+- Detection engineering and monitoring design
 
-These investigations involved tools such as **Wireshark, Autopsy, FLARE-VM, Procmon, Regshot, Splunk, and YARA rule development**.
+Tools used include **Wireshark, Autopsy, FLARE-VM, Procmon, Regshot, Splunk, and YARA rule development**.
 
 ---
 
