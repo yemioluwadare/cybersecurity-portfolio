@@ -1,10 +1,19 @@
 # Cybersecurity Portfolio
 
-This repository contains a selection of technical projects developed during my Cyber Security degree at the University of Warwick. The projects demonstrate practical work across machine learning, secure application development, relational database design, and security investigation.
-
-The focus of this portfolio is on building and analysing systems with security in mind, combining technical implementation with investigation and evaluation.
+This repository contains a selection of technical cybersecurity projects developed during my degree at the University of Warwick.
 
 ---
+
+## Projects
+
+### Machine Learning Intrusion Detection Pipeline
+Python pipeline for detecting **DDoS attacks** using CIC-IDS network telemetry and temporal evaluation.
+
+### SecureCart – Secure E-Commerce Application
+Django web application implementing **authentication**, **role-based access control**, and secure transaction workflows.
+
+### Secure Banking Database System
+PostgreSQL relational database implementing **RBAC**, **row-level security**, and **audit logging**.
 
 # Projects
 
