@@ -19,7 +19,8 @@ from django.core.exceptions import ValidationError
 # REST API for Products
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer 
+    serializer_class = ProductSerializer
+    permission_classes = [IsAdminOrReadOnly]
 
 
 def index(request):

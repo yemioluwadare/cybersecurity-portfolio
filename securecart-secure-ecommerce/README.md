@@ -123,9 +123,11 @@ http://127.0.0.1:8000/
 
 I built this in my second year. The repository focuses on backend architecture and application logic rather than production deployment, and the interface is plain.
 
-## Known issue
+## Permission fix
 
-`ProductViewSet` in `core/views.py` sets no `permission_classes`, so any logged-in
-user can create, change or delete products through `/api/products/`. Adding
-`permission_classes = [IsAdminOrReadOnly]` closes it (tested on a copy). The
-product list then becomes readable without a login.
+`ProductViewSet` in `core/views.py` first set no `permission_classes`, so any
+logged-in user could create, change or delete products through `/api/products/`.
+It now sets `permission_classes = [IsAdminOrReadOnly]`. A customer gets a 403 on
+create, update and delete, and an admin can still write. Side effect: the
+product list can be read without a login. `core/test_product_permissions.py`
+checks this; run it with `python manage.py test core.test_product_permissions`.
