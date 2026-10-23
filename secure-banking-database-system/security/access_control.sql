@@ -12,7 +12,7 @@ DO $$ BEGIN
     ) THEN
         CREATE POLICY customer_can_only_see_their_accounts
         ON Customer_Accounts
-        FOR SELECT
+        FOR SELECT TO customer
         USING (CustomerID = current_user::int);
     END IF;
 END $$;
@@ -24,7 +24,7 @@ DO $$ BEGIN
     ) THEN
         CREATE POLICY customer_can_only_see_their_transactions
         ON Transactions
-        FOR SELECT
+        FOR SELECT TO customer
         USING (AccountID IN (SELECT AccountID FROM Customer_Accounts WHERE CustomerID = current_user::int));
     END IF;
 END $$;
@@ -36,7 +36,7 @@ DO $$ BEGIN
     ) THEN
         CREATE POLICY teller_can_see_active_accounts
         ON Customer_Accounts
-        FOR SELECT
+        FOR SELECT TO teller
         USING (Status = 'Active');
     END IF;
 END $$;

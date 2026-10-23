@@ -43,6 +43,8 @@ GRANT SELECT, UPDATE ON Transactions TO teller;
 
 -- Customer: Can only view their own accounts and transactions
 GRANT SELECT (AccountID, AccountType, Balance, Status) ON Customer_Accounts TO customer;
+-- CustomerID is read by the row-level security policies, so customers need it
+GRANT SELECT (CustomerID) ON Customer_Accounts TO customer;
 GRANT SELECT (TransactionID, TransactionType, Amount, Timestamp) ON Transactions TO customer;
 
 -- Part 3: Ensure Privileges are Set Correctly
