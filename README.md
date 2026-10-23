@@ -11,14 +11,13 @@ portfolio page: https://yemioluwadare.github.io/portfolio/
   models on a split by time.
 - [SecureCart](securecart-secure-ecommerce): a Django and PostgreSQL online
   shop with login, a database-backed cart, a dummy checkout and an admin area.
-  Second-year project. Known limits: the interface is plain, and the products
-  API lets any logged-in user write (a one-line fix is tested but not applied
-  here).
+  Second-year project. The interface is plain. A gap in the products API,
+  where any logged-in user could write, is fixed and tested.
 - [Secure banking database](secure-banking-database-system): a PostgreSQL
   database with four roles, row-level security, bcrypt, encrypted amounts and
-  audit triggers. Second-year project. Known limit: the row-level security
-  policies need three changes before customers see only their own rows (tested
-  but not applied here).
+  audit triggers. Second-year project. The row-level security policies had a
+  gap that let customers read other accounts; three changes fixed it and the
+  README explains them.
 
 ## Other work, on the portfolio page
 
