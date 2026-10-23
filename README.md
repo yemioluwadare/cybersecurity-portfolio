@@ -1,94 +1,35 @@
-# Cybersecurity Portfolio
+# Cybersecurity portfolio
 
-This repository contains a selection of technical cybersecurity projects developed during my Cyber Security degree at the University of Warwick.
+Projects from my BSc Cyber Security at the University of Warwick (2:1, 2026).
+The write-ups, with figures, what I found and what I would do next, are on the
+portfolio page: https://yemioluwadare.github.io/portfolio/
 
-The portfolio demonstrates work across **machine learning for intrusion detection**, **secure web application development**, and **secure database design**.
+## Projects in this repository
 
----
+- [Intrusion detection pipeline](intrusion-detection-ml-pipeline): a Python
+  pipeline that detects DDoS attacks in CIC-IDS network data and evaluates two
+  models on a split by time.
+- [SecureCart](securecart-secure-ecommerce): a Django and PostgreSQL online
+  shop with login, a database-backed cart, a dummy checkout and an admin area.
+  Second-year project. Known limits: the interface is plain, and the products
+  API lets any logged-in user write (a one-line fix is tested but not applied
+  here).
+- [Secure banking database](secure-banking-database-system): a PostgreSQL
+  database with four roles, row-level security, bcrypt, encrypted amounts and
+  audit triggers. Second-year project. Known limit: the row-level security
+  policies need three changes before customers see only their own rows (tested
+  but not applied here).
 
-# Projects
+## Other work, on the portfolio page
 
-- **[Machine Learning Intrusion Detection Pipeline](intrusion-detection-ml-pipeline)**  
-  Python pipeline for detecting **DDoS attacks** using CIC-IDS network telemetry and temporal model evaluation.
+Security investigations (malware analysis, vulnerability analysis with exploit
+development, detection engineering, disk image forensics), a final-year AI
+compliance agent, a job search data pipeline and a Roblox game. These are not
+in this repository.
 
-- **[SecureCart – Secure E-Commerce Application](securecart-secure-ecommerce)**  
-  Django web application implementing **authentication**, **role-based access control**, and secure shopping workflows.
+## Tools
 
-- **[Secure Banking Database System](secure-banking-database-system)**  
-  PostgreSQL database implementing **RBAC**, **row-level security**, encryption, and audit logging.
+Python (pandas, scikit-learn, Django), SQL and PostgreSQL, Splunk, Wireshark,
+FLARE-VM, YARA, Autopsy.
 
----
-
-# Project Details
-
-## Machine Learning Intrusion Detection Pipeline
-
-This project implements a reproducible **machine learning pipeline for network intrusion detection** using flow telemetry from the CIC IDS 2017 dataset.
-
-Key aspects include:
-
-- Python-based preprocessing and feature engineering
-- Model training using **logistic regression** and **random forest**
-- Evaluation under **temporal train–test splits**
-- Performance analysis using **precision, recall, and ROC metrics**
-
----
-
-## SecureCart – Secure E-Commerce Application
-
-SecureCart is a **Django-based web application** modelling a secure e-commerce system.
-
-The system includes:
-
-- Authentication and secure session handling
-- **Role-based access control**
-- Product catalogue browsing and shopping cart functionality
-- Order management workflows
-
-The project demonstrates **secure web application design and backend logic**.
-
----
-
-## Secure Banking Database System
-
-This project implements a **PostgreSQL banking database** designed with strong security and integrity controls.
-
-Key features include:
-
-- **Role-Based Access Control (RBAC)**
-- **Row-Level Security (RLS)**
-- Encryption using **pgcrypto**
-- **SQL triggers** for audit logging
-- Relational schema enforcing transactional integrity
-
----
-
-# Security Investigation Work
-
-Alongside the engineering projects above, I have also completed practical security investigations including:
-
-- Malware reconstruction and behavioural analysis
-- Digital forensic disk image investigation
-- Detection engineering and monitoring design
-
-Tools used include **Wireshark, Autopsy, FLARE-VM, Procmon, Regshot, Splunk, and YARA rule development**.
-
----
-
-# Technologies Used
-
-Python  
-Machine Learning (scikit-learn, pandas)  
-SQL / PostgreSQL  
-Django  
-Wireshark  
-Autopsy  
-Splunk  
-FLARE-VM  
-
----
-
-# Author
-
-Yemi Oluwadare  
-BSc Cyber Security – University of Warwick
+Yemi Oluwadare
