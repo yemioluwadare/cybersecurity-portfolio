@@ -25,7 +25,7 @@ Users can browse products, manage a shopping cart, and complete transactions thr
 
 Python  
 Django  
-SQLite  
+PostgreSQL  
 HTML Templates  
 Bootstrap  
 
@@ -94,13 +94,18 @@ securecart-secure-ecommerce
 pip install -r requirements.txt
 ```
 
-### 2 Apply database migrations
+### 2 Configure the database
+
+Create a PostgreSQL database and a `.env` file next to `manage.py` with
+`DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` and `SECRET_KEY`.
+
+### 3 Apply database migrations
 
 ```
 python manage.py migrate
 ```
 
-### 3 Start the development server
+### 4 Start the development server
 
 ```
 python manage.py runserver
@@ -116,6 +121,11 @@ http://127.0.0.1:8000/
 
 ## Notes
 
-This project was developed as part of university coursework exploring secure web application development concepts.
+I built this in my second year. The repository focuses on backend architecture and application logic rather than production deployment, and the interface is plain.
 
-The repository focuses on demonstrating backend architecture and application logic rather than production deployment.
+## Known issue
+
+`ProductViewSet` in `core/views.py` sets no `permission_classes`, so any logged-in
+user can create, change or delete products through `/api/products/`. Adding
+`permission_classes = [IsAdminOrReadOnly]` closes it (tested on a copy). The
+product list then becomes readable without a login.
